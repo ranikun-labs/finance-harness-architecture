@@ -63,14 +63,30 @@ published Gateway route, authentication header, broker subject, or provider.
 
 | Boundary or component | Current evidence | State represented here |
 |---|---|---|
-| Finance FE | The repository contains the Finance UI, Journal port/adapter seam, and Review fixtures. | Existing client implementation; production activation is not implied. |
-| Finance Backend | The remote repository is an empty implementation target; the Finance backend contract is planned in the verified cross-repository sources. | Planned product service; no deployed backend is asserted. |
+| Finance FE | The reviewed `master` contains the P0 Finance UI, Journal UI, and Journal Create adapter seam. Its README keeps backend/API integration and Production Journal Create activation in follow-up scope. | Current client implementation; production activation is not implied. |
+| Finance Backend | The reviewed `main` contains the merged RPL-50 S2 Journal Persistence + Create API, including Finance-owned persistence and `POST /finance/journals`. | Current backend foundation and Journal Create implementation; raw reads, idempotency, and production activation remain separate gates. |
 | Shared Gateway / Shared Identity | The Foundation has accepted constrained physicalization, but extraction and cutover are not complete. | Logical shared boundary and target; not a Finance production dependency claim. |
 | AI Server | AI/RAG responsibility is separated by the Finance and Foundation architecture sources. | Target runtime boundary; no Finance production runtime is asserted. |
 | `finance-harness-docs` | The repository contains stable analysis, safety, and product knowledge. | Knowledge source and future ingestion input, not system-architecture authority. |
 | PostgreSQL / Finance-owned storage | Foundation and Finance sources define logical database ownership and prohibit cross-service database access. | Ownership boundary; physical provisioning and schema are out of scope. |
 | NATS JetStream | Foundation marks the technology as deferred until a concrete asynchronous use case. | Review-runtime target option; not current Journal transport. |
 | Evidence / Market Data Provider | No provider is accepted in the verified sources. | Future boundary only. |
+
+## Current reviewed runtime reality
+
+The current remote repository evidence separates implementation from
+activation:
+
+| Capability | Current state |
+|---|---|
+| Backend foundation | Implemented where evidenced by the current Finance BE `main`; the repository is not an empty implementation target. |
+| Journal Persistence / Create | Implemented in the merged BE S2 change, including `POST /finance/journals`; this does not turn production Create on. |
+| Journal Detail / List | Not yet implemented in the reviewed BE S2 state; required for the raw read gate. |
+| Reliability / Idempotency | Not yet evidenced as a retransmission contract; concurrent-create coverage is not idempotency. |
+| FE production Create | Not activated; the FE production adapter seam exists, while production persistence/Create activation remains follow-up work. |
+| Shared Identity production adapter | Not complete; `CurrentUserPort` and local/test seams do not prove production Identity integration. |
+| Review NATS runtime | Not implemented or activated; only the logical async target is recorded. |
+| AI runtime integration | Not implemented or activated; no provider, model, embedding, or vector implementation is selected here. |
 
 ## Target logical boundary
 
@@ -121,8 +137,9 @@ The complete register is in [`decision-log.md`](../decision-log.md).
 
 ## References
 
-- [`harness-foundation-docs` ADR-0013](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0013-target-deployment-and-data-boundaries.md)
-- [`harness-foundation-docs` ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
-- [`harness-foundation-docs` ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)
-- [`finance-harness-docs` backend architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-backend-architecture.md)
-- [`finance-harness-docs` Review Engine architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-review-engine-architecture.md)
+- [`harness-foundation-docs` ADR-0013](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0013-target-deployment-and-data-boundaries.md)
+- [`harness-foundation-docs` ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
+- [`harness-foundation-docs` ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)
+- [`finance-harness-docs` backend architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-backend-architecture.md)
+- [`finance-harness-fe` reviewed master](https://github.com/ranikun-labs/finance-harness-fe/blob/d0ed81489d75e2e714d96d02ae6cb8dd2c86fd78/README.md)
+- [`finance-harness-be` reviewed main](https://github.com/ranikun-labs/finance-harness-be/commit/8b38a65650bca8e0d96dbb6a9f4b1a13f84400d5)

@@ -3,9 +3,9 @@
 Status: Proposed
 Decision Owner: Finance Main
 Date: 2026-08-12
-Related Jira: `RPL-81`
+Related Jira: RPL-81
 Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`
-Depends On: Foundation data ownership and service-boundary decisions; Finance core-loop sources
+Depends On: Foundation data ownership and service-boundary decisions; the merged Finance core-loop contract is the previous-reality input for this proposal
 Supersedes: None
 Canonical Merge SHA: Pending until merge
 
@@ -25,14 +25,35 @@ what to retain as a personal reasoning record. Treating every intermediate AI
 output as a Journal would blur product responsibility, increase sensitive-data
 retention, and make a temporary execution look like a user-authored decision.
 
-The previously verified Finance backend, review-engine, and core-loop documents
-already establish the lifecycle distinction recorded below. This ADR normalizes
-that decision in the Finance Architecture repository; it does not create a new
-storage schema.
+This is a new Proposed Finance Architecture decision under RPL-81. It is not a
+normalization of an already accepted lifecycle decision, and it does not create
+a new storage schema.
+
+### Previous Canonical Reality (merged Finance contract)
+
+The merged Finance contract at [`finance-core-loop-and-domain-contract.md`]
+(Finance `main`,
+[`5326977691b420f573a469c0bb7635de26fe2aba`](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-core-loop-and-domain-contract.md))
+establishes the prior lifecycle semantics:
+
+- Section 3 models `Question → ChecklistResult → AnalysisRequest →
+  AnalysisResult`, followed by an explicit Journal save only after a completed
+  result.
+- Section 8 defines `AnalysisResult` as a separate resource whose completed
+  result is immutable and which Journal references.
+- Section 9 defines Journal as holding user-authored information and a
+  completed `AnalysisResult` reference, with saving requested explicitly.
+- Section 11 repeats the relationship as `AnalysisResult (immutable when
+  completed)` and `Journal → user-authored information + completed
+  AnalysisResult reference`.
+
+Together, those sections establish the previous durable AnalysisResult and
+Journal-reference model. They do not establish the ReviewExecution,
+DecisionContextSnapshot, and Retrospective lifecycle proposed below.
 
 ## 2. Decision
 
-Finance adopts the following lifecycle model:
+Finance proposes the following target lifecycle under RPL-81:
 
 | Concept | Meaning | Lifecycle |
 |---|---|---|
@@ -55,6 +76,21 @@ saves a Decision Context, Finance copies only the required context values and
 provenance into the immutable snapshot boundary.
 
 ## 3. Boundaries
+
+### Decision delta and supersession semantics
+
+This proposal differs from the previous merged Finance contract: the review
+operation is transient, while the Journal is the user's durable reasoning
+record; an immutable saved context is a separate snapshot rather than a
+durable `AnalysisResult` reference; and a Retrospective is a separate durable
+record.
+
+Upon acceptance and merge, this ADR supersedes only the prior
+`AnalysisResult` durability/reference lifecycle semantics in Sections 8–11 of
+the merged core-loop contract. It does not supersede that entire document or
+unrelated domain, API, safety, or product decisions in the existing Finance
+documents. Migration or deprecation treatment for the historical document is a
+deferred follow-up.
 
 - Finance Backend owns the Journal, ReviewExecution, DecisionContextSnapshot,
   and Retrospective product lifecycle semantics.
@@ -125,7 +161,7 @@ automatic Review-to-Journal persistence.
 
 - [Journal Create contract](../contracts/journal-create.md)
 - [Lifecycle and ownership map](../data/lifecycle-and-ownership.md)
-- [Finance backend architecture reference](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-backend-architecture.md)
-- [Finance core-loop and domain contract reference](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-core-loop-and-domain-contract.md)
-- [Finance Review Engine architecture reference](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-review-engine-architecture.md)
-- [Foundation ADR-0013](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0013-target-deployment-and-data-boundaries.md)
+- [Finance backend architecture reference](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-backend-architecture.md)
+- [Finance core-loop and domain contract reference](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-core-loop-and-domain-contract.md)
+- [Finance MVP build and verification plan](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-mvp-build-and-verification-plan.md)
+- [Foundation ADR-0013](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0013-target-deployment-and-data-boundaries.md)

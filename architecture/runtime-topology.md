@@ -6,7 +6,9 @@ implementation evidence.
 ## Current implementation boundary
 
 The Journal Create contract is a Finance service-local product API consumed by
-the FE adapter:
+the FE adapter. The current BE remote also contains the merged S2 persistence
+and Create implementation; that implementation evidence is separate from
+production activation:
 
 ```text
 Finance FE
@@ -108,7 +110,8 @@ No value is selected here for:
 
 ## References
 
-- [`harness-foundation-docs` ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
-- [`harness-foundation-docs` ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)
-- [`finance-harness-docs` Review Engine architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-review-engine-architecture.md)
-- [`finance-harness-docs` core loop contract](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-core-loop-and-domain-contract.md)
+- [`harness-foundation-docs` ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
+- [`harness-foundation-docs` ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)
+- [`finance-harness-docs` core loop contract](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-core-loop-and-domain-contract.md)
+- [`finance-harness-docs` MVP build and verification plan](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-mvp-build-and-verification-plan.md)
+- [`finance-harness-be` reviewed main](https://github.com/ranikun-labs/finance-harness-be/commit/8b38a65650bca8e0d96dbb6a9f4b1a13f84400d5)

@@ -3,9 +3,10 @@
 Status: Proposed
 Decision Owner: Finance Main
 Date: 2026-08-12
-Related Jira: `RPL-81`, `RPL-50`
+Related Jira: RPL-81
 Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, `platform-services`
 Depends On: Foundation identity, gateway, and data-ownership decisions
+Implementation Tracking: RPL-50
 Supersedes: None
 Canonical Merge SHA: Pending until merge
 

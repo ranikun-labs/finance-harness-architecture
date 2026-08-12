@@ -3,9 +3,10 @@
 Status: Proposed
 Decision Owner: Finance Main
 Date: 2026-08-12
-Related Jira: `RPL-81`, `RPL-50`, `RPL-68`
+Related Jira: RPL-81
 Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, AI Runtime
-Depends On: Foundation communication and shared-AI boundaries; Finance Review Engine contract
+Depends On: Foundation communication and shared-AI boundaries; ADR-001 Journal Lifecycle; current Finance product requirements
+Implementation Tracking: RPL-50, RPL-68
 Supersedes: None
 Canonical Merge SHA: Pending until merge
 
@@ -17,14 +18,32 @@ and technical model execution. A single product-side LLM flow would couple
 Finance to provider details and make it easy to present retrieved knowledge as
 current fact.
 
-The verified Finance Review Engine decision already adopts a progressive hybrid
-shape. This ADR records the ownership and runtime boundary in the Finance
-Architecture repository without selecting a provider or claiming an AI Server
-deployment.
+This is a Proposed Finance-specific runtime composition under RPL-81. The
+current remote Finance documents provide product and build constraints, but do
+not provide an accepted remote Review Engine architecture with this async
+composition. This ADR therefore records a proposal constrained by upstream
+Foundation decisions, ADR-001, and current Finance requirements; it does not
+claim that an AI Server or broker runtime is already verified or deployed.
 
 ## 2. Decision
 
-AI Server owns the technical AI execution boundary:
+### Accepted upstream constraints
+
+The following are constraints carried from the current Foundation sources and
+the merged Finance product sources:
+
+- Foundation communication rules govern service-to-service transport and do
+  not authorize a broker topology without a concrete use case and accepted
+  contract.
+- The Foundation Shared AI boundary keeps ingestion, retrieval, embedding, and
+  model execution outside the Finance Backend product boundary.
+- The merged Finance core-loop contract and build plan are source evidence for
+  the existing product lifecycle and explicit-save flow; ADR-001 records the
+  proposed lifecycle delta separately.
+
+### Proposed Finance runtime composition
+
+The proposed AI Server responsibility is the technical AI execution boundary:
 
 - `finance-harness-docs` ingestion;
 - RAG and embedding;
@@ -45,7 +64,7 @@ Finance Backend must not use a direct LLM SDK, product-side Spring AI execution,
 embedding, vector retrieval, or direct Vector DB access as a substitute for the
 AI Runtime boundary.
 
-Phase 1 is:
+The proposed Finance Phase 1 composition is:
 
 ```text
 Static / Versioned Checklist
@@ -67,11 +86,14 @@ judgment.
 For a later asynchronous Review Runtime, the proposed logical boundary is:
 
 ```text
-Finance Backend
+Frontend
+  → REST / Polling
+  → Finance Backend
   → NATS JetStream
   → AI Server
-  → NATS result
+  → NATS Result
   → Finance Backend
+  → Frontend
 ```
 
 The FE remains on its product-facing REST/polling contract. This is a target
@@ -151,7 +173,8 @@ must not be described as an active production runtime.
 
 - [Review Execution contract](../contracts/review-execution.md)
 - [Runtime topology](../architecture/runtime-topology.md)
-- [Finance Review Engine architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-review-engine-architecture.md)
-- [Finance backend architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-backend-architecture.md)
-- [Foundation ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
-- [Foundation ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)
+- [Finance core-loop and domain contract](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-core-loop-and-domain-contract.md)
+- [Finance MVP build and verification plan](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-mvp-build-and-verification-plan.md)
+- [Finance backend architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-backend-architecture.md)
+- [Foundation ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
+- [Foundation ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)

@@ -1,52 +1,71 @@
 # Review Execution Contract
 
-Status: Proposed canonical contract; accepted source boundaries and proposed
-async shape are separated below.
+Status: Proposed canonical contract; previous remote reality, upstream
+constraints, and the RPL-81 proposal are separated below.
 
 Owner: Finance Backend for product lifecycle; AI Server for technical AI
 execution
 Consumers: Finance FE and AI Runtime
-Related Jira: `RPL-81`, `RPL-50`, `RPL-68`
+Related Jira: RPL-81
+Implementation Tracking: RPL-50, RPL-68
 
-## Accepted source-level boundaries
+## Previous merged Finance reality
 
-The current verified contract accepts the following:
+The merged Finance core-loop contract records the previous product lifecycle:
 
-1. `ReviewExecution`, progress, and transient Review Result are temporary
-   operational state. They are not automatically durable user records.
-2. The Finance core loop is:
+```text
+Question
+  → ChecklistResult
+  → AnalysisRequest
+  → AnalysisResult
+  → explicit Journal save
+```
 
-   ```text
-   Question
-     → ReviewExecution / ChecklistResult
-     → transient Review Result
-     → explicit user Journal save
-     → optional immutable DecisionContextSnapshot
-     → Retrospective
-   ```
+Its AnalysisResult section defines the completed result as immutable and its
+Journal section defines Journal as holding a reference to that completed
+result. ADR-001 proposes a new lifecycle under RPL-81; this document must not
+present the new lifecycle as an already accepted historical contract.
 
-3. Phase 1 uses:
+## Accepted upstream constraints
 
-   ```text
-   Static / Versioned Checklist
-   + finance-harness-docs RAG
-   + Cheap LLM Analysis Guidance
-   ```
+The current upstream constraints are:
 
-4. Stable RAG knowledge is methodology/analysis knowledge. It is not current
-   financial evidence.
-5. When no Financial Evidence Provider is available:
+- Foundation Shared AI and communication boundaries keep technical AI
+  execution, RAG, retrieval, embedding, and model execution outside the
+  Finance Backend product implementation.
+- Stable RAG knowledge is methodology/analysis knowledge. It is not current
+  financial evidence.
+- When no Financial Evidence Provider is available:
 
-   ```text
-   Fact = NOT_APPLICABLE
-   Current-market Inference = NOT_APPLICABLE
-   ```
+  ```text
+  Fact = NOT_APPLICABLE
+  Current-market Inference = NOT_APPLICABLE
+  ```
 
-6. A Phase 1 guidance sentence must not be presented as a current fact,
-   unverified evidence, or a recommendation.
-7. Finance Backend owns product lifecycle, policy validation, result meaning,
-   and explicit durable-save semantics. AI Server owns RAG, embedding,
-   retrieval, model routing, and model execution.
+- A guidance sentence must not be presented as a current fact, unverified
+  evidence, or a recommendation.
+- NATS is not part of Journal Create S1/S2; any later broker use requires a
+  concrete Review Runtime use case and an accepted follow-up contract.
+
+## Proposed Finance contract under RPL-81
+
+ADR-001 proposes that `ReviewExecution` and its transient result are temporary
+operational state, that Journal is a durable user-owned reasoning record, that
+an explicit save creates an immutable `DecisionContextSnapshot`, and that a
+`Retrospective` is a separate timestamped durable record. Completing a Review
+does not automatically save the full output to Journal.
+
+The proposed Finance Phase 1 composition is:
+
+```text
+Static / Versioned Checklist
++ finance-harness-docs RAG
++ Cheap LLM Analysis Guidance
+```
+
+Finance Backend owns product lifecycle, policy validation, result meaning, and
+explicit durable-save semantics. AI Server owns RAG, embedding, retrieval,
+model routing, and model execution.
 
 ## Phase 1 client-facing transport
 
@@ -68,6 +87,8 @@ and validation boundary passes.
 For a later Review Runtime phase, the proposed logical flow is:
 
 ```text
+Frontend
+  ↓ REST / Polling
 Finance Backend
   ↓ request message
 NATS JetStream
@@ -102,8 +123,8 @@ that NATS, the AI Server, or a production consumer is currently deployed.
 
 | State | Items |
 |---|---|
-| Accepted | Phase 1 checklist + stable knowledge RAG + cheap guidance; no current evidence in Phase 1; transient Review lifecycle; REST/polling client boundary; Finance/AI ownership separation |
-| Proposed | NATS JetStream request/result boundary for a later asynchronous Review Runtime |
+| Accepted upstream constraints | Foundation AI/communication boundaries; stable-knowledge versus current-evidence distinction; `NOT_APPLICABLE` behavior when no evidence provider exists; no NATS dependency for Journal Create S1/S2 |
+| Proposed under RPL-81 | ReviewExecution/transient-result lifecycle; explicit Journal save; DecisionContextSnapshot and Retrospective boundaries; Phase 1 composition; NATS JetStream request/result composition |
 | Deferred | Exact stream, subject, retention, retry, acknowledgement/delivery, dead-letter and replay policy; async payload/schema; timeout values; AI vendor; embedding vendor/model; vector DB; Market Data/Evidence provider; production retention and runtime support |
 
 ## Failure and compatibility minimums
@@ -127,6 +148,7 @@ This document does not choose values for those fields.
 - [ADR-001 Journal Lifecycle](../adr/ADR-001-journal-lifecycle.md)
 - [ADR-004 Production Activation Gates](../adr/ADR-004-production-activation-gates.md)
 - [Runtime topology](../architecture/runtime-topology.md)
-- [Finance Review Engine architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-review-engine-architecture.md)
-- [Finance core-loop contract](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-core-loop-and-domain-contract.md)
-- [Foundation service communication policy](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/architecture/backend-service-foundation/service-communication-policy.md)
+- [Finance core-loop contract](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-core-loop-and-domain-contract.md)
+- [Finance MVP build and verification plan](https://github.com/ranikun-labs/finance-harness-docs/blob/5326977691b420f573a469c0bb7635de26fe2aba/04-backend-architecture/finance-mvp-build-and-verification-plan.md)
+- [Foundation service communication policy](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/architecture/backend-service-foundation/service-communication-policy.md)
+- [Foundation ADR-0015](https://github.com/ranikun-labs/harness-foundation-docs/blob/69fceb267094756913f400f8b4045590bd0e8ac5/docs/adr/ADR-0015-platform-communication-messaging-scaling.md)
