@@ -1,6 +1,6 @@
 # Finance Harness System Context
 
-Status: Proposed canonical view; logical boundary only.
+Status: Accepted canonical view; logical boundary only.
 
 This document distinguishes observed repository facts, the target logical
 architecture, and decisions that remain deferred. A component shown as a

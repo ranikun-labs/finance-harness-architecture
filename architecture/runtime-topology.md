@@ -1,6 +1,6 @@
 # Finance Runtime Topology
 
-Status: Proposed canonical view; logical target separated from current
+Status: Accepted canonical view; logical target separated from current
 implementation evidence.
 
 ## Current implementation boundary

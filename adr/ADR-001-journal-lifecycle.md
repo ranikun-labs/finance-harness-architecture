@@ -1,13 +1,13 @@
 # ADR-001: Journal Lifecycle
 
-Status: Proposed
+Status: Accepted
 Decision Owner: Finance Main
 Date: 2026-08-12
 Related Jira: RPL-81
 Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`
 Depends On: Foundation data ownership and service-boundary decisions; the merged Finance core-loop contract is the previous-reality input for this proposal
 Supersedes: None
-Canonical Merge SHA: Pending until merge
+Canonical Merge SHA: 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8
 
 ## 1. Context
 

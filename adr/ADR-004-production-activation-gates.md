@@ -1,6 +1,6 @@
 # ADR-004: Production Activation Gates
 
-Status: Proposed
+Status: Accepted
 Decision Owner: Finance Main
 Date: 2026-08-12
 Related Jira: RPL-81
@@ -8,7 +8,7 @@ Related Repositories: `harness-foundation-docs`, `finance-harness-architecture`,
 Depends On: Foundation ADR-0017 migration gates; Journal, Identity, and Review contracts
 Upstream Gate: G0/RPL-52; G1/RPL-71 + RPL-72; G2/RPL-53; G3/RPL-54; G4/RPL-55; RPL-27; RPL-50
 Supersedes: None
-Canonical Merge SHA: Pending until merge
+Canonical Merge SHA: 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8
 
 ## 1. Context
 

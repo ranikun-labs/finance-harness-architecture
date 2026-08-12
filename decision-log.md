@@ -1,17 +1,17 @@
 # Finance Architecture Decision Log
 
 This is the inventory for the Finance Architecture canonical repository. It
-records the state and lineage of each decision without manufacturing a merge
-SHA or promoting a deferred value to a contract.
+records the state, lineage, and canonical merge SHA of each decision without
+promoting a deferred value to a contract.
 
 ## ADR inventory
 
 | ID | Title | Status | Jira | Related repositories | Canonical Merge SHA | Superseded |
 |---|---|---|---|---|---|---|
-| ADR-001 | Journal Lifecycle | Proposed | RPL-81 | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | Pending until merge | No |
-| ADR-002 | Shared Identity Consumer Boundary | Proposed | RPL-81 | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | Pending until merge | No |
-| ADR-003 | Review Engine / AI Runtime Boundary | Proposed | RPL-81 | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, AI Runtime | Pending until merge | No |
-| ADR-004 | Production Activation Gates | Proposed | RPL-81 | `harness-foundation-docs`, `finance-harness-fe`, `finance-harness-be`, Shared Gateway / Identity, AI Runtime | Pending until merge | No |
+| ADR-001 | Journal Lifecycle | Accepted | RPL-81 | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8 | No |
+| ADR-002 | Shared Identity Consumer Boundary | Accepted | RPL-81 | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8 | No |
+| ADR-003 | Review Engine / AI Runtime Boundary | Accepted | RPL-81 | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, AI Runtime | 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8 | No |
+| ADR-004 | Production Activation Gates | Accepted | RPL-81 | `harness-foundation-docs`, `finance-harness-fe`, `finance-harness-be`, Shared Gateway / Identity, AI Runtime | 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8 | No |
 
 Finance ADR numbering starts at `ADR-001` in this repository. It is a
 Finance-specific namespace and does not collide with Foundation ADR-0011
@@ -98,9 +98,9 @@ The following decisions are proposed in this PR:
 
 | Contract | Status | Owner / consumer | Scope |
 |---|---|---|---|
-| [`Journal Create`](./contracts/journal-create.md) | Proposed canonical record; current service-local contract evidence | Finance Backend / Finance FE | Service-local `POST /finance/journals`, local time semantics, ownership and ID boundary |
-| [`Identity Consumer`](./contracts/identity-consumer.md) | Proposed canonical record; semantic boundary recorded | Finance Application / Shared Identity adapter | `CurrentUserPort` and opaque stable `identityUserId`; transport details separated |
-| [`Review Execution`](./contracts/review-execution.md) | Proposed canonical record; upstream constraints and Finance proposal separated | Finance Backend / FE / AI Server | Phase 1 processing, proposed lifecycle, async target, RAG/evidence separation |
+| [`Journal Create`](./contracts/journal-create.md) | Accepted canonical record; current service-local contract evidence | Finance Backend / Finance FE | Service-local `POST /finance/journals`, local time semantics, ownership and ID boundary |
+| [`Identity Consumer`](./contracts/identity-consumer.md) | Accepted canonical record; semantic boundary recorded | Finance Application / Shared Identity adapter | `CurrentUserPort` and opaque stable `identityUserId`; transport details separated |
+| [`Review Execution`](./contracts/review-execution.md) | Accepted canonical record; upstream constraints and Finance proposal separated | Finance Backend / FE / AI Server | Phase 1 processing, proposed lifecycle, async target, RAG/evidence separation |
 
 These are human-readable contracts. OpenAPI, AsyncAPI, protobuf, schema
 registry, and code generation are outside this bootstrap.
@@ -169,6 +169,8 @@ in this PR.
 
 ## Merge SHA policy
 
-`Canonical Merge SHA` remains `Pending until merge` for every ADR until an
-independent review is complete and this PR is merged. Neither the initial base
-SHA nor a branch HEAD is a substitute for the canonical merge SHA.
+`Canonical Merge SHA` is
+`07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8` for ADR-001 through ADR-004,
+established by the initial canonicalization PR #1. This metadata
+reconciliation PR must not replace that value with its own merge SHA. Future
+ADRs retain `Pending until merge` until their own canonical merge.

@@ -1,6 +1,6 @@
 # ADR-003: Review Engine / AI Runtime Boundary
 
-Status: Proposed
+Status: Accepted
 Decision Owner: Finance Main
 Date: 2026-08-12
 Related Jira: RPL-81
@@ -8,7 +8,7 @@ Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `financ
 Depends On: Foundation communication and shared-AI boundaries; ADR-001 Journal Lifecycle; current Finance product requirements
 Implementation Tracking: RPL-50, RPL-68
 Supersedes: None
-Canonical Merge SHA: Pending until merge
+Canonical Merge SHA: 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8
 
 ## 1. Context
 

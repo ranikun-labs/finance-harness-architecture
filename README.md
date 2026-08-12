@@ -58,8 +58,9 @@ Finance Main Decision
 → FE / BE / AI Handoff
 ```
 
-Until this bootstrap PR is merged, the ADRs in this repository are `Proposed`
-and their `Canonical Merge SHA` is `Pending until merge`.
+PR #1 established the canonical merge for the initial ADR set. ADR-001 through
+ADR-004 are `Accepted` and their `Canonical Merge SHA` is
+`07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8`.
 
 ## Source precedence
 
@@ -73,8 +74,8 @@ When sources disagree, use this order:
 6. Confluence projections.
 
 Architecture documents in `finance-harness-docs/04-backend-architecture/`
-remain historical and implementation-oriented references during this
-bootstrap. They are referenced, not migrated or duplicated here.
+remain historical and implementation-oriented references. They are referenced,
+not migrated or duplicated here.
 
 ## Document map
 
