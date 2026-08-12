@@ -1,6 +1,6 @@
 # ADR-002: Shared Identity Consumer Boundary
 
-Status: Proposed
+Status: Accepted
 Decision Owner: Finance Main
 Date: 2026-08-12
 Related Jira: RPL-81
@@ -8,7 +8,7 @@ Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `financ
 Depends On: Foundation identity, gateway, and data-ownership decisions
 Implementation Tracking: RPL-50
 Supersedes: None
-Canonical Merge SHA: Pending until merge
+Canonical Merge SHA: 07b598375a6ce4c84c3137d7c4a9b082c1c7e2c8
 
 ## 1. Context
 

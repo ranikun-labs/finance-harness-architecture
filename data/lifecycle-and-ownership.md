@@ -1,6 +1,6 @@
 # Data Lifecycle and Ownership
 
-Status: Proposed canonical data-boundary view.
+Status: Accepted canonical data-boundary view.
 
 This document records ownership and lifecycle semantics without inventing a
 database schema, table name, migration, or provider implementation. Finance

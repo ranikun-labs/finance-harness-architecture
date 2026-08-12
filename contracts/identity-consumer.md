@@ -1,6 +1,6 @@
 # Identity Consumer Contract
 
-Status: Proposed canonical semantic contract; transport details remain
+Status: Accepted canonical semantic contract; transport details remain
 deferred.
 
 Owner: Finance Application

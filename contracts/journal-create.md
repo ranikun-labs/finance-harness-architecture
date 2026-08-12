@@ -1,6 +1,6 @@
 # Journal Create Contract
 
-Status: Proposed canonical cross-repository contract; FE/BE alignment was
+Status: Accepted canonical cross-repository contract; FE/BE alignment was
 confirmed in preflight.
 
 Owner: Finance Backend

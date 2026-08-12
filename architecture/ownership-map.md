@@ -1,6 +1,6 @@
 # Finance Ownership Map
 
-Status: Proposed canonical ownership view.
+Status: Accepted canonical ownership view.
 
 The map separates logical responsibility from implementation status. Ownership
 does not imply that the owner has already deployed the runtime.

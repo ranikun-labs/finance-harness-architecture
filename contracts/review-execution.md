@@ -1,6 +1,6 @@
 # Review Execution Contract
 
-Status: Proposed canonical contract; previous remote reality, upstream
+Status: Accepted canonical contract; previous remote reality, upstream
 constraints, and the RPL-81 proposal are separated below.
 
 Owner: Finance Backend for product lifecycle; AI Server for technical AI
