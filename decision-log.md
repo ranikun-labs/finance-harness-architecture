@@ -125,4 +125,3 @@ a follow-up decision, not a hidden change in this PR.
 `Canonical Merge SHA` remains `Pending until merge` for every ADR until an
 independent review is complete and this PR is merged. Neither the initial base
 SHA nor a branch HEAD is a substitute for the canonical merge SHA.
-

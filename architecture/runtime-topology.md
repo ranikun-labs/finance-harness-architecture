@@ -112,4 +112,3 @@ No value is selected here for:
 - [`harness-foundation-docs` ADR-0017](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0017-shared-platform-gateway-identity-physicalization.md)
 - [`finance-harness-docs` Review Engine architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-review-engine-architecture.md)
 - [`finance-harness-docs` core loop contract](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-core-loop-and-domain-contract.md)
-

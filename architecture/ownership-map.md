@@ -63,4 +63,3 @@ responsibility.
 - [`harness-foundation-docs` ADR-0013](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/adr/ADR-0013-target-deployment-and-data-boundaries.md)
 - [`harness-foundation-docs` identity token contract](https://github.com/ranikun-labs/harness-foundation-docs/blob/main/docs/contracts/backend-service-foundation/identity-token-contract.md)
 - [`finance-harness-docs` backend architecture](https://github.com/ranikun-labs/finance-harness-docs/blob/main/04-backend-architecture/finance-backend-architecture.md)
-

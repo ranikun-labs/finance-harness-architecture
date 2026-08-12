@@ -108,4 +108,3 @@ commit only establishes a `main` ref so that the architecture changes can be
 reviewed in a pull request. The architecture commits are scoped to the files
 listed in the bootstrap plan; unrelated repository-local harness state is not
 part of the PR.
-
