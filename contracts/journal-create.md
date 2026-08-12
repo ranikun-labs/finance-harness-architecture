@@ -5,7 +5,7 @@ confirmed in preflight.
 
 Owner: Finance Backend
 Consumer: Finance FE
-Related Jira: `RPL-XXX`, `RPL-50`, `RPL-68`
+Related Jira: `RPL-81`, `RPL-50`, `RPL-68`
 
 ## Scope
 

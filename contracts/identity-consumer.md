@@ -5,7 +5,7 @@ deferred.
 
 Owner: Finance Application
 Provider boundary: Shared Identity
-Related Jira: `RPL-XXX`, `RPL-50`
+Related Jira: `RPL-81`, `RPL-50`
 
 ## Purpose
 

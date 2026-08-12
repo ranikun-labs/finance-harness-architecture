@@ -6,7 +6,7 @@ async shape are separated below.
 Owner: Finance Backend for product lifecycle; AI Server for technical AI
 execution
 Consumers: Finance FE and AI Runtime
-Related Jira: `RPL-XXX`, `RPL-50`, `RPL-68`
+Related Jira: `RPL-81`, `RPL-50`, `RPL-68`
 
 ## Accepted source-level boundaries
 

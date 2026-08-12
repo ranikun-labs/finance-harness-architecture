@@ -3,7 +3,7 @@
 Status: Proposed
 Decision Owner: Finance Main
 Date: 2026-08-12
-Related Jira: `RPL-XXX`, `RPL-50`, `RPL-68`
+Related Jira: `RPL-81`, `RPL-50`, `RPL-68`
 Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, AI Runtime
 Depends On: Foundation communication and shared-AI boundaries; Finance Review Engine contract
 Supersedes: None

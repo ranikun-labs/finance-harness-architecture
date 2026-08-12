@@ -3,7 +3,7 @@
 Status: Proposed
 Decision Owner: Finance Main
 Date: 2026-08-12
-Related Jira: `RPL-XXX`, `RPL-50`, `RPL-52`, `RPL-53`, `RPL-54`, `RPL-55`, `RPL-68`
+Related Jira: `RPL-81`, `RPL-50`, `RPL-52`, `RPL-53`, `RPL-54`, `RPL-55`, `RPL-68`
 Related Repositories: `harness-foundation-docs`, `finance-harness-architecture`, `finance-harness-fe`, `finance-harness-be`, `platform-services`, AI Runtime
 Depends On: Foundation ADR-0017 migration gates; Journal, Identity, and Review contracts
 Supersedes: None

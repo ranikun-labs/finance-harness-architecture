@@ -8,10 +8,10 @@ promoting a deferred value to a contract.
 
 | ID | Title | Status | Jira | Related repositories | Canonical Merge SHA | Superseded |
 |---|---|---|---|---|---|---|
-| ADR-001 | Journal Lifecycle | Proposed | `RPL-XXX` | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | Pending until merge | No |
-| ADR-002 | Shared Identity Consumer Boundary | Proposed | `RPL-XXX` | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | Pending until merge | No |
-| ADR-003 | Review Engine / AI Runtime Boundary | Proposed | `RPL-XXX` | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, AI Runtime | Pending until merge | No |
-| ADR-004 | Production Activation Gates | Proposed | `RPL-XXX` | `harness-foundation-docs`, `finance-harness-fe`, `finance-harness-be`, Shared Gateway / Identity, AI Runtime | Pending until merge | No |
+| ADR-001 | Journal Lifecycle | Proposed | `RPL-81` | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | Pending until merge | No |
+| ADR-002 | Shared Identity Consumer Boundary | Proposed | `RPL-81` | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be` | Pending until merge | No |
+| ADR-003 | Review Engine / AI Runtime Boundary | Proposed | `RPL-81` | `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`, AI Runtime | Pending until merge | No |
+| ADR-004 | Production Activation Gates | Proposed | `RPL-81` | `harness-foundation-docs`, `finance-harness-fe`, `finance-harness-be`, Shared Gateway / Identity, AI Runtime | Pending until merge | No |
 
 Finance ADR numbering starts at `ADR-001` in this repository. It is a
 Finance-specific namespace and does not collide with Foundation ADR-0011

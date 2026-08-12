@@ -3,7 +3,7 @@
 Status: Proposed
 Decision Owner: Finance Main
 Date: 2026-08-12
-Related Jira: `RPL-XXX`
+Related Jira: `RPL-81`
 Related Repositories: `harness-foundation-docs`, `finance-harness-docs`, `finance-harness-fe`, `finance-harness-be`
 Depends On: Foundation data ownership and service-boundary decisions; Finance core-loop sources
 Supersedes: None
